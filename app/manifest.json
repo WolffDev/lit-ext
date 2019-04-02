@@ -1,0 +1,61 @@
+{
+  "name": "__MSG_appName__",
+  "short_name": "__MSG_appShortName__",
+  "description": "__MSG_appDescription__",
+  "version": "0.0.0",
+  "manifest_version": 2,
+  "default_locale": "en",
+  "icons": {
+    "16": "images/icon-16.png",
+    "128": "images/icon-128.png"
+  },
+  "background": {
+    "scripts": [
+      "scripts/background.js"
+    ]
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "exclude_matches": [
+        "https://*/_/chrome/*",
+        "https://online.intowords.com/*",
+        "https://test-online.intowords.com/*",
+        "http://*.valhalla.local/*",
+        "https://devintowords.mv-nordic.com/*",
+        "https://demointowords.mv-nordic.com/*",
+        "https://mv-login.mv-nordic.com/*",
+        "https://mv-login-test.mv-nordic.com/*",
+        "https://signon.mv-nordic.com/*",
+        "https://idp.feide.no/*",
+        "https://login.emu.dk/*",
+        "https://signon.vitec-mv.com/*",
+        "https://signon-test.vitec-mv.com/*",
+        "https://signon-dev.vitec-mv.com/*",
+        "https://itw-online-test.intowords.com/*",
+        "https://itw-online-dev.intowords.com/*"
+      ],
+      "all_frames": true,
+      "run_at": "document_idle",
+      "js": [
+        "copy/webcomponent-bundle.min.js",
+        "scripts/content.js"
+      ],
+      "css": ["styles/content-script.css"]
+    }
+  ],
+  "browser_action": {
+    "default_icon": {
+      "19": "images/icon-19.png",
+      "38": "images/icon-38.png"
+    },
+    "default_title": "__MSG_browserActionTitle__",
+    "default_popup": "pages/popup.html"
+  },
+  "permissions": [
+    "tabs",
+    "cookies",
+    "activeTab",
+    "<all_urls>"
+  ]
+}
